@@ -6,22 +6,13 @@
     <title>Document</title>
   </head>
   <body>
-    <!-- <h1>Modulos</h1>
-    <div id="content"></div>
-    <script type="module" src="index.js"></script> -->
     <h1>Tareas App</h1>
-    <form id="form-task">
-      <input type="text" name="task" id="taskName" placeholder="tarea..." />
-      <input
-        type="text"
-        name="category"
-        id="categoría"
-        placeholder="categoría"
-      />
-      <button type="submit">Agregar tarea</button>
-    </form>
-    <ul id="tasks"></ul>
+    <input type="text" name="task" id="new-task" placeholder="tarea..." />
+    <button id="button-add">Agregar Tarea</button>
     <button id="button-delete">Borrar tareas</button>
+    <ul id="tasks-list"></ul>
+    <div id="content"></div>
+
     <script type="module" src="./tasks-app/tasks.js"></script>
   </body>
 </html>

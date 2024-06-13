@@ -1,14 +1,29 @@
-console.log("iniciando proyecto de tasks");
+const tasks = ["Comer", "Estudiar", "Editar videos", "Ver televisión"];
 
-const formTasks = document.querySelector("#form-task");
-console.log(formTasks);
+const tasksList = document.querySelector("#tasks-list");
 
-function submitForm(event) {
-  event.preventDefault();
+const templateTasks = `
+  ${tasks.map((task) => `<li>${task}</li>`).join("")}
+`;
 
-  const { task, category } = event.target.elements;
-  console.log(task.value);
-  console.log(category.value);
+tasksList.innerHTML = templateTasks;
+
+const buttonDelete = document.querySelector("#button-delete");
+
+function deleteTasks() {
+  tasks.splice(0, tasks.length);
+  tasksList.innerHTML = "";
 }
 
-formTasks.addEventListener("submit", submitForm);
+buttonDelete.addEventListener("click", deleteTasks);
+
+//================================
+
+const buttonAdd = document.querySelector("#button-add");
+const inputTask = document.querySelector("#new-task");
+
+function addTask() {
+  tasks.push(inputTask.value);
+}
+
+buttonAdd.addEventListener("click", addTask);
