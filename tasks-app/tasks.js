@@ -1,29 +1,50 @@
-const tasks = ["Comer", "Estudiar", "Editar videos", "Ver televisión"];
-
-const tasksList = document.querySelector("#tasks-list");
-
-const templateTasks = `
-  ${tasks.map((task) => `<li>${task}</li>`).join("")}
-`;
-
-tasksList.innerHTML = templateTasks;
-
-const buttonDelete = document.querySelector("#button-delete");
-
-function deleteTasks() {
-  tasks.splice(0, tasks.length);
-  tasksList.innerHTML = "";
-}
-
-buttonDelete.addEventListener("click", deleteTasks);
-
-//================================
-
-const buttonAdd = document.querySelector("#button-add");
+//obtener elementos DOM
+const buttonDelete = document.querySelector("#delete-tasks");
+const buttonAdd = document.querySelector("#add-task");
 const inputTask = document.querySelector("#new-task");
+const ul = document.querySelector("#tasks");
+//Primer paso
+const tasks = ["Comer", "Dormir", "Desayunar"];
 
-function addTask() {
-  tasks.push(inputTask.value);
-}
+const deleteTasks = () => {
+  tasks.splice(0, tasks.length);
+};
 
-buttonAdd.addEventListener("click", addTask);
+const addTasks = (task) => {
+  tasks.push(task);
+};
+
+const getTasks = () => {
+  return tasks;
+};
+
+//========================================
+
+const showTasks = () => {
+  ul.innerHTML = "";
+  const tasks = getTasks();
+
+  ul.innerHTML = `
+  ${tasks.map((ele) => `<li>${ele}</li>`).join("")}
+  `;
+};
+
+const handleTasks = (_event) => {
+  const newTask = inputTask.value;
+
+  if (newTask === "") return;
+
+  addTasks(newTask);
+  inputTask.value = "";
+  showTasks();
+};
+
+const handleDelete = (_event) => {
+  ul.innerHTML = "";
+  deleteTasks();
+};
+
+buttonDelete.addEventListener("click", handleDelete);
+buttonAdd.addEventListener("click", handleTasks);
+
+showTasks();
