@@ -18,7 +18,7 @@ const showTasks = () => {
 const handleTasks = (_event) => {
   const newTask = inputTask.value;
 
-  if (newTask === "") return;
+  if (newTask.trim() === "") return;
 
   addTasks(newTask);
   inputTask.value = "";
